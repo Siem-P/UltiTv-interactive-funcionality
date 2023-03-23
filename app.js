@@ -25,23 +25,23 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/newPlayer",  (req, res) => {
-	res.render("newPlayer")
+	res.render("newPlayer", questiondata)
 });
 
 app.post("/newPlayer", (req, res) => {
 	console.log(req.body)
+
 	postJson(postUrl, req.body).then((data) => {
 		console.log(data);
     let newPlayer = { ...req.body }
+    
 
     if (data.success) {
       res.redirect("/?memberPosted=true") 
-      // TODO: squad meegeven, message meegeven
-      // TODO: Toast meegeven aan de homepagina
     } else {
       const errormessage = `${data.message}: Mogelijk komt dit door de slug die al bestaat.`
       const newplayer = { error: errormessage, values: newPlayer }
-				res.render("newPlayer", newplayer)
+				res.render("newPlayer", {newplayer, questiondata})
     }
   })
 });

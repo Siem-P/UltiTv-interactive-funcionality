@@ -1,6 +1,5 @@
 <%- include('partials/head.ejs') %>
 
-
 <!-- <form method="post" action="/" name="newPlayer">
 	<label> First name
 		<input type="text" name="firstname" value>
@@ -43,20 +42,31 @@
 	</label>
 </form> -->
 
-
 <form action="/newPlayer" method="post" name="newplayerform">
-	<label> Name
-		<input type="text" name="name" value="<%= locals.values?.name ?? '' %>">
+	<label>
+		Name
+		<input type="text" name="name" value="<%= locals.values?.name ?? '' %>" />
 	</label>
-	<label> Gender
-		<input type="text" name="gender" value="<%= locals.values?.gender ?? ''%>">
+	<label>
+		Gender
+		<input type="text" name="gender" value="<%= locals.values?.gender ?? ''%>" />
 	</label>
-	<label> Jersey Number
-		<input type="text" name="jerseyNumber" value="<%= locals.values?.jerseyNumber ?? ''%>">
+	<label>
+		Jersey Number
+		<input type="text" name="jerseyNumber" value="<%= locals.values?.jerseyNumber ?? ''%>" />
 	</label>
-		<button type="submit">Create</button>
+	<label>
+		Questions
+		<select name="question">
+			<option disabled selected>--- Select ---</option>
+			<% questions.forEach(question => { %>
+				<option value="<%= question.title %>"><%= question.title %></option>	
+			<% }) %>
+		</select>
+	</label>
+	<input type="text" name="answers" hidden value="[]" />
+	<button type="submit">Create</button>
 </form>
-
 
 <a href="/">Terug naar Homepagina</a>
 
