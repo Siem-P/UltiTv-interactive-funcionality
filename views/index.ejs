@@ -1,0 +1,19 @@
+<%- include('partials/head.ejs') %>
+
+<section class="players">
+    <% players.forEach(player => { %>
+    <article>
+        <div><%= player.jerseyNumber %></div>
+        <!-- Name -->
+        <div><%= player.name %></div>
+        <!-- Gender -->
+        <div><%= player.gender %></div>
+        <!-- Jersey Number -->
+        
+    </article>
+    <% }) %>
+</section>
+
+<a href="/newPlayer">Voeg nieuwe speler toe</a>
+
+<%- include('partials/foot.ejs') %>

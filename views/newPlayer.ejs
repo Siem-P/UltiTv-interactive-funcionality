@@ -1,0 +1,63 @@
+<%- include('partials/head.ejs') %>
+
+
+<!-- <form method="post" action="/" name="newPlayer">
+	<label> First name
+		<input type="text" name="firstname" value>
+	</label>
+	<label> Last name
+		<input type="text" name="lastname" value>
+	</label>
+	<label> Pronounced
+		<input type="text" name="pronounced" value>
+	</label>
+	<label> Gender
+		<select type="select" name="gender" value>
+			<option disabled selected>--- Select ---</opion>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			<option value="other">Other</option>
+		</select>
+	</label>
+	<label> Jersey number
+		<input type="number" name="jerseynumber" min="1" max="100" value>
+	</label>
+	<label> TeamRole
+		<input type="text" name="teamRole" value>
+	</label>
+	<label> Country
+		<select list="countries" name="country" value>
+			<option selected disabled>--- Select ---
+			<option value="Netherlands">Netherlands
+			<option value="Belgium">Belgium
+			<option value="Germany">Germany
+			<option value="Norway">Norway
+			<option value="Italy">Italy
+			<option value="Denmark">Denmark
+			<option value="Spain">Spain
+			<option value="Portugal">Portugal
+		</select>
+	</label>
+	<label> 
+		<input type="submit" name="create" value="Create">
+	</label>
+</form> -->
+
+
+<form action="/newPlayer" method="post" name="newplayerform">
+
+	<label> Name
+		<input type="text" name="name" value>
+	</label>
+	<label> Gender
+		<input type="text" name="gender" value>
+	</label>
+	<label> Jersey Number
+		<input type="text" name="jerseynumber" value>
+	</label>
+	<label> 
+		<input type="submit" name="create" value="Create">
+	</label>
+</form>
+
+<%- include('partials/foot.ejs') %>
