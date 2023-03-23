@@ -1,14 +1,16 @@
 <%- include('partials/head.ejs') %>
 
 <section class="players">
-    <% players.forEach(player => { %>
+    <% playerdata.players.forEach(player => { %>
     <article>
+        <!-- player id -->
+        <div><%= player.id %></div>
+        <!-- Jersey Number -->
         <div><%= player.jerseyNumber %></div>
         <!-- Name -->
         <div><%= player.name %></div>
         <!-- Gender -->
         <div><%= player.gender %></div>
-        <!-- Jersey Number -->
         
     </article>
     <% }) %>

@@ -4,6 +4,10 @@ import bodyParser from "body-parser";
 
 const apiUrl = "https://api.ultitv.fdnd.nl/api/v1"
 const postUrl = "https://api.ultitv.fdnd.nl/api/v1/players"
+const playerUrl = apiUrl + "/players"
+const questionUrl = apiUrl + "/questions"
+const questiondata = await fetchApi(questionUrl)
+const playerdata = await fetchApi(playerUrl)
 
 const app = express();
 
@@ -15,10 +19,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
-	const playerUrl = apiUrl + "/players"
-	const data = await fetchApi(playerUrl)
-  console.log(data);
-  res.render("index", data);
+	console.log(playerdata)
+	console.log(questiondata)
+  res.render("index", {questiondata, playerdata});
 });
 
 app.get("/newPlayer",  (req, res) => {
@@ -28,7 +31,8 @@ app.get("/newPlayer",  (req, res) => {
 app.post("/newPlayer", (req, res) => {
 	console.log(req.body)
 	postJson(postUrl, req.body).then((data) => {
-    let newMember = { ... req.body }
+		console.log(data);
+    let newPlayer = { ...req.body }
 
     if (data.success) {
       res.redirect("/?memberPosted=true") 
@@ -36,9 +40,8 @@ app.post("/newPlayer", (req, res) => {
       // TODO: Toast meegeven aan de homepagina
     } else {
       const errormessage = `${data.message}: Mogelijk komt dit door de slug die al bestaat.`
-      const newdata = { error: errormessage, values: newMember }
-      
-      res.render('newPlayer', newdata)
+      const newplayer = { error: errormessage, values: newPlayer }
+				res.render("newPlayer", newplayer)
     }
   })
 });

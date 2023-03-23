@@ -45,19 +45,19 @@
 
 
 <form action="/newPlayer" method="post" name="newplayerform">
-
 	<label> Name
-		<input type="text" name="name" value>
+		<input type="text" name="name" value="<%= locals.values?.name ?? '' %>">
 	</label>
 	<label> Gender
-		<input type="text" name="gender" value>
+		<input type="text" name="gender" value="<%= locals.values?.gender ?? ''%>">
 	</label>
 	<label> Jersey Number
-		<input type="text" name="jerseynumber" value>
+		<input type="text" name="jerseyNumber" value="<%= locals.values?.jerseyNumber ?? ''%>">
 	</label>
-	<label> 
-		<input type="submit" name="create" value="Create">
-	</label>
+		<button type="submit">Create</button>
 </form>
+
+
+<a href="/">Terug naar Homepagina</a>
 
 <%- include('partials/foot.ejs') %>
