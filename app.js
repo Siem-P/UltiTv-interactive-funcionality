@@ -25,11 +25,20 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/newPlayer",  (req, res) => {
+	let { questions } = questiondata
+	if (!questions) questions = []
 	res.render("newPlayer", questiondata)
 });
 
 app.post("/newPlayer", (req, res) => {
 	console.log(req.body)
+
+	req.body.answers = [
+		{
+			content: req.body.content,
+			questionId: req.body.question
+		}
+	]
 
 	postJson(postUrl, req.body).then((data) => {
 		console.log(data);
@@ -41,7 +50,7 @@ app.post("/newPlayer", (req, res) => {
     } else {
       const errormessage = `${data.message}: Mogelijk komt dit door de slug die al bestaat.`
       const newplayer = { error: errormessage, values: newPlayer }
-				res.render("newPlayer", {newplayer, questiondata})
+			res.render("newPlayer", {newplayer, questiondata})
     }
   })
 });

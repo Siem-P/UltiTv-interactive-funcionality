@@ -60,11 +60,15 @@
 		<select name="question">
 			<option disabled selected>--- Select ---</option>
 			<% questions.forEach(question => { %>
-				<option value="<%= question.title %>"><%= question.title %></option>	
+				<option value="<%= question.id %>"><%= question.title %></option>	
 			<% }) %>
 		</select>
 	</label>
-	<input type="text" name="answers" hidden value="[]" />
+	<label>
+		Answer
+		<input type="text" name="content" value="<%= locals.values?.content ?? ''%>" />
+	</label>
+
 	<button type="submit">Create</button>
 </form>
 
