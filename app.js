@@ -2,6 +2,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 
+
 const apiUrl = "https://api.ultitv.fdnd.nl/api/v1"
 const postUrl = "https://api.ultitv.fdnd.nl/api/v1/players"
 const playerUrl = apiUrl + "/players"
@@ -25,32 +26,34 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/newPlayer",  (req, res) => {
-	let { questions } = questiondata
-	if (!questions) questions = []
 	res.render("newPlayer", questiondata)
 });
 
 app.post("/newPlayer", (req, res) => {
-	console.log(req.body)
+	
 
-	req.body.answers = [
+	req.body.answers = 
+	[	
 		{
 			content: req.body.content,
-			questionId: req.body.question
+			questionId: req.body.question 
 		}
 	]
+	console.log(1, req.body)
 
 	postJson(postUrl, req.body).then((data) => {
-		console.log(data);
-    let newPlayer = { ...req.body }
-    
+		
+    let newPlayer = req.body
 
-    if (data.success) {
-      res.redirect("/?memberPosted=true") 
+    if (data.id) {
+      res.redirect("/") 
     } else {
       const errormessage = `${data.message}: Mogelijk komt dit door de slug die al bestaat.`
       const newplayer = { error: errormessage, values: newPlayer }
-			res.render("newPlayer", {newplayer, questiondata})
+
+
+
+			res.render("newPlayer", {questiondata, newplayer})
     }
   })
 });
@@ -78,6 +81,7 @@ async function fetchApi(url) {
  * @returns the json response from the api endpoint
  */
 export async function postJson(url, body) {
+	console.log(2, JSON.stringify(body))
   return await fetch(url, {
     method: 'post',
     body: JSON.stringify(body),
