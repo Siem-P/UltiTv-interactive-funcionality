@@ -1,7 +1,13 @@
 // Importeer express uit de node_modules map
 import express from "express";
 import bodyParser from "body-parser";
+import fs from "fs"
 
+// API URL's 
+let rawGameData = fs.readFileSync("./private/api/game/943.json");
+let rawStatsData = fs.readFileSync("./private/api/game/943/statistics.json");
+let parsedGameData = JSON.parse(rawGameData);
+let parsedStats = JSON.parse(rawStatsData);
 
 const apiUrl = "https://api.ultitv.fdnd.nl/api/v1"
 const postUrl = "https://api.ultitv.fdnd.nl/api/v1/players"
@@ -22,7 +28,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", async (req, res) => {
 	console.log(playerdata)
 	console.log(questiondata)
-  res.render("index", {questions: questiondata.questions, players: playerdata.players});
+  parsedGameData.team1CountryISO2Code = parsedGameData.team1CountryISO2Code.toLowerCase()
+  parsedGameData.team2CountryISO2Code = parsedGameData.team2CountryISO2Code.toLowerCase() 
+  res.render("index", {questions: questiondata.questions, players: playerdata.players, parsedGameData, parsedStats});
 });
 
 app.get("/newPlayer",  (req, res) => {
@@ -54,7 +62,7 @@ app.post("/newPlayer", async (req, res) => {
   })
 });
 
-app.set("port", process.env.PORT || 8000);
+app.set("port", process.env.PORT || 8005);
 
 app.listen(app.get("port"), function () {
   console.log(`Application started on http://localhost:${app.get("port")}`);

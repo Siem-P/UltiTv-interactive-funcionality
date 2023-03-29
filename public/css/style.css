@@ -1,8 +1,40 @@
-form {
+:root {
+  --hold-green: #51A653;
+  --break-green: #00DC32;
+  --conceded-red: #AD4D4D;
+  --broken-red: #E9111C;
+  --boy-blue: #6E9FD7;
+  --girl-pink: #F8B9D4;
+
+  --white-color: #fff;
+  --card-background: #F9f4EA;
+  --body-background: #3A3C63;
+
+
+
+  --border-radius-3: 0.3em;
+  --column-gap-6: 0.6em;
+  --row-gap-1: 1em;
+  --cell-gap-4: 0.4em;
+  --cell-gap-8: 0.8em;
+  --cell-padding-4: 0.6em;
+  --block-border-radius: .5em;
+  --gamestat-padding: 0.2em 0.4em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Form Styling */
+.newplayer--form {
   display: flex;
   flex-direction: column;
 }
-form > label {
+.newplayer--form > label {
   display: flex;
   flex-flow: column wrap;
   width: 10em;
@@ -21,3 +53,352 @@ article > div {
 button {
   width: 10em;
 }
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+header {
+  display: flex;
+  height: 5em;
+  width: 100%;
+  background-color: #30343f;
+  margin-bottom: 2.5em;
+}
+
+header h1 {
+  color: var(--white-color);
+  text-align: center;
+}
+
+body {
+  font: 100%/1.4 "Open Sans", sans-serif;
+  background-color: var(--body-background);
+  padding: 1em;
+}
+
+main {
+  display: flex;
+}
+
+section {
+  border-radius: var(--block-border-radius);
+
+}
+
+.card-inner {
+  padding: 1em 0 0 1em;
+  font-weight: bold;
+}
+
+/* Cards */
+.cardGameInfo {
+  background-color: var(--card-background);
+  /* grid-area: span 2 / span 2; */
+}
+
+.cardGameInfo h2 {
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+}
+
+.card-score {
+  background-color: var(--card-background);
+  /* grid-area: span 4 / span 2; */
+  min-height: auto;
+}
+
+.card-score h3 {
+  padding-left: 0.5em;
+}
+.cardConfig {
+  background-color: var(--card-background);
+  /* grid-area: span 2 / span 1; */
+  height: 10em;
+}
+
+.cardTeam {
+  display: flex;
+  flex-direction: column;
+  background-color: wheat;
+  /* grid-area: span 2 / span 3; */
+}
+
+/* Game Info */
+.team-info-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+ 
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  row-gap: 0.6em;
+  padding: var(--cell-padding-4);
+}
+
+.team-flag {
+  aspect-ratio: 2/1;
+  width: 64px;
+  object-fit: contain;
+}
+
+.team-description { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-name { 
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  font-weight: 600;
+}
+
+.team-country {
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.game-score {
+  display: flex;
+  flex-direction: column;;
+}
+
+
+
+
+/* Player cards */
+.teamPlayer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+  padding: 0.5em;
+}
+
+.teamPlayer-card {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(239, 239, 239);
+  box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.45);
+  height: 4em;
+  margin: 0.5em;
+  width: 12em;
+}
+
+.jerseyNumber {
+  display: flex;
+  justify-content: center;
+  background-color: var(--jerseyColor);
+  align-items: center;
+  width: 2em;
+  height: 100%;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-right: 2px solid lightgray;
+}
+
+.gender-M{
+  border-bottom: 5px solid var(--boy-blue);
+}
+
+.gender-F{
+  border-bottom: 5px solid var(--girl-pink);
+}
+
+.namestat-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.playerName {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.gameStats {
+  width: 100%;
+  margin: 0 auto 0.2em auto;
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 0.5em;
+  margin-left: 0.5em;
+}
+
+/* Gamestats */
+.goal {
+  padding: var(--gamestat-padding);
+  background-color: green;
+  border-radius: 0.3em;
+  color: var(--white-color);
+}
+
+.assist {
+  padding: var(--gamestat-padding);
+  background-color: #5950D2;
+  border-radius: 0.3em;
+  color: var(--white-color);
+}
+
+.block {
+  padding: var(--gamestat-padding);
+  background-color: rgb(185, 43, 43);
+  border-radius: 0.3em;
+  color: var(--white-color);
+}
+
+.turnover {
+  padding: var(--gamestat-padding);
+  background-color: #FAB617;
+  border-radius: 0.3em;
+  color: black;
+}
+
+/* Scoreboard */
+
+.card-score{
+  margin: 0 0 auto 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius-3);
+  padding: var(--cell-padding-4);
+  box-shadow: 0px 0px 8px -1px rgba(0, 0, 0, 0.75);
+}
+
+.card-score table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.card-score table thead tr th{
+  padding: 0.4em 0;
+}
+
+.card-score th{
+  font-size: 0.9em;
+}
+
+.card-score tbody tr td{
+  text-align: center;
+}
+
+.card-score tbody tr:nth-child(even){
+  background: rgb(205, 203, 203);
+}
+
+.card-score tbody tr:first-of-type td:first-of-type{
+  border-top-left-radius: var(--border-radius-3);
+}
+
+.card-score tbody tr:first-of-type td:last-of-type{
+  border-top-right-radius: var(--border-radius-3);
+}
+
+.card-score tbody tr:last-of-type td:first-of-type{
+  border-bottom-left-radius: var(--border-radius-3);
+}
+
+.card-score tbody tr:last-of-type td:last-of-type{
+  border-bottom-right-radius: var(--border-radius-3);
+}
+
+.hold{
+  background: var(--hold-green);
+}
+
+.break{
+  background: var(--break-green);
+}
+
+.conceded{
+  background: var(--conceded-red);
+  color: white;
+}
+
+.broken{
+  background: var(--broken-red);
+}
+
+.table-score{
+  font-weight: bold;
+  background: var(--card-background);
+}
+
+@media (min-width: 48rem) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* grid-template-rows: 1fr 1fr;  */
+    grid-auto-rows: fit-content(1em);
+    gap: 12px 12px;
+    grid-template-areas:
+      "Config Game-info"
+      "Scoreboard cardteam1"
+      "Scoreboard cardteam2"
+      ;
+    height: 100vh;
+  }
+
+  /* Cards */
+  .cardGameInfo {
+    background-color: var(--card-background);
+    grid-area: Game-info;
+  }
+ 
+  .cardScore {
+    background-color: var(--card-background);
+    grid-area: Scoreboard;
+  }
+
+  .cardconfig {
+    background-color: var(--card-background);
+    grid-area: Config
+  }
+
+  .cardteam1 {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-background);
+    grid-area: cardteam1;
+  }
+
+  .cardteam2 {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-background);
+    grid-area: cardteam2;
+  }
+
+  /* Card selector block */
+  .cardconfig {
+
+  }
+
+
+}
+
+

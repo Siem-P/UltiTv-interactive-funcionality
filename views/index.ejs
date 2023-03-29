@@ -1,20 +1,248 @@
-<%- include('partials/head.ejs') %>
+<%- include('./partials/head') %>
+<header>
+  <h1>UltiTV Commentary Source</h1>
+</header>
+<main>
+  <!-- Game Info -->
+  <section class="cardGameInfo">
+    <h2><%= parsedGameData.gameStatus %> - <%= parsedGameData.field %> - <%= parsedGameData.division %></h2>
+    <div class="team-info-wrapper">
+      <div class="team">
+        <!-- Flag based on Olympic Code -->
+        <img class="team-flag" src="https://flagcdn.com/<%- parsedGameData.team1CountryISO2Code %>.svg"
+          alt="Flag of <%- parsedGameData.team1CountryName %>" width="64">
 
-<section class="players">
-    <% players.forEach(player => { %>
-    <article>
-        <!-- player id -->
-        <div><%= player.id %></div>
-        <!-- Jersey Number -->
-        <div><%= player.jerseyNumber %></div>
-        <!-- Name -->
-        <h2><%= player.name %></h2>
-        <!-- Gender -->
-        <div><%= player.gender %></div>
-    </article>
-    <% }) %>
-</section>
+        <!-- Info about team such as name and olympic code -->
+        <div class="team-description">
+          <p class="team-name"><%- parsedGameData.team1Name %></p>
+          <p class="team-country">(<%- parsedGameData.team1CountryOlympicCode %>)</p>
+        </div>
+      </div>
 
-<a href="/newPlayer">Voeg nieuwe speler toe</a>
+      <div class="score">
+        <p class="game-score"><%- parsedStats.team1Score %> - <%- parsedStats.team2Score %></p>
+      </div>
 
-<%- include('partials/foot.ejs') %>
+      <div class="team">
+        <!-- Flag based on Olympic Code -->
+        <img class="team-flag" src="https://flagcdn.com/<%- parsedGameData.team2CountryISO2Code %>.svg"
+          alt="Flag of <%- parsedGameData.team2CountryName %>" width="64">
+
+        <!-- Info about team such as name and olympic code -->
+        <div class="team-description">
+          <p class="team-name"><%- parsedGameData.team2Name %></p>
+          <p class="team-country">(<%- parsedGameData.team2CountryOlympicCode %>)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Config tab -->
+  <section class="cardconfig">
+    <div class="card-inner">
+      <h3>Card Selector</h3>
+      <div class="card-selector">
+        <form name="">
+          <label>
+            <input type="button" name="" value="Points">
+          </label>
+          <label>
+            <input type="button" value="Team 1">
+          </label>
+          <label>
+            <input type="button" value="Team 2">
+          </label>
+          <label>
+            <input type="button" value="Game Info">
+          </label>
+          <label>
+            <input type="button" value="Scoreboard">
+          </label>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Score -->
+  <section class="card-score">
+      <h3>Score</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Pass</th>
+          <th>Turn</th>
+          <th>O/D</th>
+          <th colspan="3">Score</th>
+          <th>O/D</th>
+          <th>Turn</th>
+          <th>Pass</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% parsedStats.scoredPoints.forEach(scoreStat => { %>
+        <tr>
+          <%# Check if team 1 scored and adjust table colors %>
+          <% if (scoreStat.scored === scoreStat.team1Name) { %>
+          <%# If team 1 was on offense during scored point -> hold, which means dark green color %>
+          <% if (scoreStat.team1OorD === "O") { %>
+          <td class="hold"><%- scoreStat.team1Passes %></td>
+          <td class="hold"><%- scoreStat.team1Turnovers %></td>
+          <td class="hold"><%- scoreStat.team1OorD %></td>
+          <% } else { %>
+          <%# If team 1 was on defence during scored point -> break, which means green color %>
+          <td class="break"><%- scoreStat.team1Passes %></td>
+          <td class="break"><%- scoreStat.team1Turnovers %></td>
+          <td class="break"><%- scoreStat.team1OorD %></td>
+          <% } %>
+          <% } else { %>
+          <%# If team 1 was scored on during defence -> conceded, which means dark red color %>
+          <% if (scoreStat.team1OorD === "D") { %>
+          <td class="conceded"><%- scoreStat.team1Passes %></td>
+          <td class="conceded"><%- scoreStat.team1Turnovers %></td>
+          <td class="conceded"><%- scoreStat.team1OorD %></td>
+          <% } else { %>
+          <%# If team 1 was scored on during offense -> broken, which means red color %>
+          <td class="broken"><%- scoreStat.team1Passes %></td>
+          <td class="broken"><%- scoreStat.team1Turnovers %></td>
+          <td class="broken"><%- scoreStat.team1OorD %></td>
+          <% } %>
+          <% } %>
+
+          <td class="table-score"><%- scoreStat.team1Score %></td>
+          <td class="table-score">-</td>
+          <td class="table-score"><%- scoreStat.team2Score %></td>
+          <%# Check if team 2 scored and adjust table colors %>
+          <% if (scoreStat.scored === scoreStat.team2Name) { %>
+          <%# If team 2 was on offense during scored point -> hold, which means dark green color %>
+          <% if (scoreStat.team2OorD === "O") { %>
+          <td class="hold"><%- scoreStat.team2OorD %></td>
+          <td class="hold"><%- scoreStat.team2Turnovers %></td>
+          <td class="hold"><%- scoreStat.team2Passes %></td>
+
+          <% } else { %>
+          <%# If team 2 was on defence during scored point -> break, which means green color %>
+          <td class="break"><%- scoreStat.team2OorD %></td>
+          <td class="break"><%- scoreStat.team2Turnovers %></td>
+          <td class="break"><%- scoreStat.team2Passes %></td>
+          <% } %>
+          <% } else { %>
+          <%# If team 2 was scored on during defence -> conceded, which means dark red color %>
+          <% if (scoreStat.team2OorD === "D") { %>
+          <td class="conceded"><%- scoreStat.team2OorD %></td>
+          <td class="conceded"><%- scoreStat.team2Turnovers %></td>
+          <td class="conceded"><%- scoreStat.team2Passes %></td>
+          <% } else { %>
+          <%# If team 2 was scored on during offense -> broken, which means red color %>
+          <td class="broken"><%- scoreStat.team2OorD %></td>
+          <td class="broken"><%- scoreStat.team2Turnovers %></td>
+          <td class="broken"><%- scoreStat.team2Passes %></td>
+          <% } %>
+          <% } %>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Team 1 -->
+  <section class="cardteam1">
+    <div class="card-inner">
+      <h3><%= parsedGameData.team1Name %></h3>
+    </div>
+    <div class="teamPlayer-container">
+      <% parsedGameData.team1Players.forEach(player => { %>
+
+      <div class="teamPlayer-card  gender-<%- player.gender %>">
+        <div class="jerseyNumber"><%= player.jerseyNumber %></div>
+        <div class="namestat-wrapper">
+          <h4 class="playerName"><%= player.name %></h4>
+          <div class="gameStats">
+
+            <% 
+              let goal =  parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length 
+              let assist = parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length
+
+              let block = parsedStats.scoredPoints.reduce((count, sp) => {
+                  return (sp.blockPlayers ? count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length : count = 0)
+              }, 0);
+
+              let turnover = parsedStats.scoredPoints.reduce((count, sp) => {
+                  return (sp.turnoverPlayers ? count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length : count = 0)
+              }, 0);
+              %>
+            <!-- Check if stats are larger than 0, if not -> DO NOT DISPLAY STATS -->
+            <% if (goal > 0 ) { %>
+            <p class="goal"><%- goal; %></p>
+            <% } %>
+
+
+            <% if (assist > 0) { %>
+            <p class="assist"><%- assist %></p>
+            <% } %>
+
+            <% if (block > 0) { %>
+            <p class="block"><%- block %></p>
+            <% } %>
+
+            <% if (turnover > 0) { %>
+            <p class="turnover"><%- turnover %></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <!-- Team 2 -->
+  <section class="cardteam2">
+    <div class="card-inner">
+      <h3><%= parsedGameData.team2Name %></h3>
+    </div>
+    <div class="teamPlayer-container">
+      <% parsedGameData.team2Players.forEach(player => { %>
+
+      <div class="teamPlayer-card gender-<%- player.gender %>">
+        <div class="jerseyNumber"><%= player.jerseyNumber %></div>
+        <div class="namestat-wrapper">
+          <h4 class="playerName"><%= player.name %></h4>
+          <div class="gameStats">
+
+            <% 
+              let goal =  parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length 
+              let assist = parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length
+
+              let block = parsedStats.scoredPoints.reduce((count, sp) => {
+                  return (sp.blockPlayers ? count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length : count = 0)
+              }, 0);
+
+              let turnover = parsedStats.scoredPoints.reduce((count, sp) => {
+                  return (sp.turnoverPlayers ? count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length : count = 0)
+              }, 0);
+            %>
+
+            <!-- Check if stats are larger than 0, if not -> DO NOT DISPLAY STATS -->
+            <% if (goal > 0 ) { %>
+            <p class="goal"><%- goal; %></p>
+            <% } %>
+
+            <% if (assist > 0) { %>
+            <p class="assist"><%- assist %></p>
+            <% } %>
+
+            <% if (block > 0) { %>
+            <p class="block"><%- block %></p>
+            <% } %>
+
+            <% if (turnover > 0) { %>
+            <p class="turnover"><%- turnover %></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+</main>
+
+<%- include('./partials/foot') %>
