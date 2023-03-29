@@ -22,16 +22,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", async (req, res) => {
 	console.log(playerdata)
 	console.log(questiondata)
-  res.render("index", {questiondata, playerdata});
+  res.render("index", {questions: questiondata.questions, players: playerdata.players});
 });
 
 app.get("/newPlayer",  (req, res) => {
-	res.render("newPlayer", questiondata)
+	res.render("newPlayer", {questions: questiondata.questions})
 });
 
-app.post("/newPlayer", (req, res) => {
-	
-
+app.post("/newPlayer", async (req, res) => {
 	req.body.answers = 
 	[	
 		{
@@ -45,15 +43,13 @@ app.post("/newPlayer", (req, res) => {
 		
     let newPlayer = req.body
 
-    if (data.id) {
-      res.redirect("/") 
+    if (data.succes) {
+      res.redirect("/?memberPosterd=true") 
     } else {
+			
       const errormessage = `${data.message}: Mogelijk komt dit door de slug die al bestaat.`
       const newplayer = { error: errormessage, values: newPlayer }
-
-
-
-			res.render("newPlayer", {questiondata, newplayer})
+			res.render("newPlayer", {questions: questiondata.questions, players: playerdata.players, newplayer})
     }
   })
 });

@@ -59,6 +59,7 @@
 		Questions
 		<select name="question">
 			<option disabled selected>--- Select ---</option>
+
 			<% if (typeof questions !== "undefined") { %>
 				<% questions.forEach(question => { %>
 					<option value="<%= question.id %>"><%= question.title %></option>	
@@ -66,6 +67,7 @@
 			<% } else { %>
 				<p>Geen questions beschikbaar.</p>
 			<% } %>
+			
 		</select>
 	</label>
 	<label>
