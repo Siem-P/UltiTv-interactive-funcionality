@@ -11,8 +11,6 @@
   --body-background: #3A3C63;
   --sidepanel-background: #132333;
 
-
-
   --border-radius-3: 0.3em;
   --column-gap-6: 0.6em;
   --row-gap-1: 1em;
@@ -28,6 +26,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 
 /* Form Styling */
 .newplayer--form {
@@ -97,8 +96,6 @@ html {
  body {
   font: 100%/1.4 "Open Sans", sans-serif;
   background-color: var(--body-background);
-  
-  
 }
 
 main {
@@ -109,7 +106,6 @@ main {
 
 section {
   border-radius: var(--block-border-radius);
-
 }
 
 .card-inner {
@@ -450,6 +446,7 @@ section {
     background-color: var(--conceded-red);
     margin-bottom: 1em;
     width: 9em;
+    color: var(--white-color);
   }
   .card-selector--button {
     padding: 0.5em 0.7em;

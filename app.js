@@ -1,5 +1,6 @@
 // Importeer express uit de node_modules map
 import express from "express";
+import compression from "compression";
 import bodyParser from "body-parser";
 import fs from "fs"
 
@@ -22,6 +23,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 
 app.use(express.static("public"));
+app.use(compression())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -36,6 +38,11 @@ app.get("/", async (req, res) => {
 app.get("/newPlayer",  (req, res) => {
 	res.render("newPlayer", {questions: questiondata.questions})
 });
+
+app.get("/players", (req, res) => {
+
+  res.render("players")
+})
 
 app.post("/newPlayer", async (req, res) => {
   
