@@ -15,6 +15,7 @@
 ## Beschrijving
 <!-- In de Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual toe 📸 -->
+![image](https://user-images.githubusercontent.com/64197688/230198424-b2d369e9-efc5-4aaa-b57e-3a43b1ff5ddf.png)
 
 <!-- Voeg een link toe naar Github Pages 🌐-->
 Ulti.TV wilt graag een redesign van het huidige Commentary Source. Hiermee kunnen zij voor dat de webstrijden beginnen zichzelf inlezen met informatie over de speler en de wedstrijd. 
@@ -33,14 +34,15 @@ Dit project is gemaakt met:
 
 ### Tools
 
-💻 Visual Studio Code
-🎨 Concepts
-### ñTech
+💻 Visual Studio Code <br>
+🎨 Concepts <br>
 
-⚙️ NodeJS
-🖼️ EJS
-📡 ExpressJS
-🖌️ CSS
+### Tech
+
+⚙️ NodeJS <br>
+🖼️ EJS <br>
+📡 ExpressJS <br>
+🖌️ CSS <br>
 
 ### NodeJS
 
