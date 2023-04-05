@@ -15,6 +15,7 @@
 ## Beschrijving
 <!-- In de Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual toe 📸 -->
+
 <!-- Voeg een link toe naar Github Pages 🌐-->
 Ulti.TV wilt graag een redesign van het huidige Commentary Source. Hiermee kunnen zij voor dat de webstrijden beginnen zichzelf inlezen met informatie over de speler en de wedstrijd. 
 
