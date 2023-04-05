@@ -3,7 +3,7 @@
 <aside class="sidepanel">
   <div class="navigation-links">
     <ul>
-      <li><button class="fullscreen-toggler">Go Fullscreen</button>
+      <li><button class="fullscreen-toggler">Fullscreen</button>
       <li><a href="/">Home</a></li>
       <li><a href="/teams">Teams</a></li>
       <li><a href="/players">Players</a></li>
@@ -51,23 +51,27 @@
     <div class="card-inner">
       <h3>Card Selector</h3>
       <div class="card-selector">
-        <form name="">
+        <form name="" class="card-selector--form">
+
+          <!-- Use checkboxes -- www.royal.nl -->
           <label>
-            <input type="button" name="" value="Points">
+            <input type="button" class="card-selector--button" value="Points">
           </label>
           <label>
-            <input type="button" value="Team 1">
+            <input type="button" class="card-selector--button" value="Team 1">
           </label>
           <label>
-            <input type="button" value="Team 2">
+            <input type="button" class="card-selector--button" value="Team 2">
           </label>
           <label>
-            <input type="button" value="Game Info">
+            <input type="button" class="card-selector--button" value="Game Info">
           </label>
           <label>
-            <input type="button" value="Scoreboard">
+            <input type="button" class="card-selector--button" value="Scoreboard">
           </label>
+            <a href="/newPlayer" class="card-selector--button">Add Player</a>
         </form>
+      
       </div>
     </div>
   </section>

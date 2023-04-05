@@ -29,7 +29,7 @@ app.get("/", async (req, res) => {
 	console.log(playerdata)
 	console.log(questiondata)
   parsedGameData.team1CountryISO2Code = parsedGameData.team1CountryISO2Code.toLowerCase()
-  parsedGameData.team2CountryISO2Code = parsedGameData.team2CountryISO2Code.toLowerCase() 
+  parsedGameData.team2CountryISO2Code = parsedGameData.team2CountryISO2Code.toLowerCase()
   res.render("index", {questions: questiondata.questions, players: playerdata.players, parsedGameData, parsedStats});
 });
 
@@ -38,6 +38,7 @@ app.get("/newPlayer",  (req, res) => {
 });
 
 app.post("/newPlayer", async (req, res) => {
+  
 	req.body.answers = 
 	[	
 		{

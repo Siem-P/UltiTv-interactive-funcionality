@@ -29,7 +29,6 @@
   box-sizing: border-box;
 }
 
-
 /* Form Styling */
 .newplayer--form {
   display: flex;
@@ -67,17 +66,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
-
-
-/* header {
-  display: flex;
-  height: 5em;
-  width: 100%;
-  background-color: #30343f;
-  margin-bottom: 2.5em;
-} */
-
 /* Aside panel */
 .sidepanel {
   display: flex;
@@ -106,12 +94,7 @@ html {
   color: var(--white-color);
 }
 
-header h1 {
-  color: var(--white-color);
-  text-align: center;
-}
-
-body {
+ body {
   font: 100%/1.4 "Open Sans", sans-serif;
   background-color: var(--body-background);
   
@@ -219,9 +202,6 @@ section {
   display: flex;
   flex-direction: column;;
 }
-
-
-
 
 /* Player cards */
 .teamPlayer-container {
@@ -429,7 +409,20 @@ section {
 
   /* Card selector block */
   .cardconfig {
+    display: flex;
+  }
 
+  .card-selector--form {
+    display: flex;
+    flex-flow: row wrap;
+    width: 95%;
+    row-gap: 0.5em;
+    column-gap: 0.5em;
+  }
+  
+  .card-selector {
+    display: flex;
+    row-gap: 0.3em;
   }
 
 
@@ -457,6 +450,14 @@ section {
     background-color: var(--conceded-red);
     margin-bottom: 1em;
     width: 9em;
+  }
+  .card-selector--button {
+    padding: 0.5em 0.7em;
+    background-color: var(--body-background);
+    border: none;
+    border-radius: var(--border-radius-3);
+    color: var(--white-color);
+    
   }
 
 }
