@@ -18,10 +18,6 @@
 <!-- Voeg een link toe naar Github Pages 🌐-->
 Ulti.TV wilt graag een redesign van het huidige Commentary Source. Hiermee kunnen zij voor dat de webstrijden beginnen zichzelf inlezen met informatie over de speler en de wedstrijd. 
 
-Deze user story heb ik aangenomen om mee te beginnen:
-
-> "As a commentator I want to be able to see the basic details about a single game I will be commentating on, so that I can prepare in advance." <br>
-
 ## Gebruik
 <!--Bij Gebruik staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
 Deze tool is uitsluitend voor de UltiTV commentatoren en developers die mogelijke verbeteringen of veranderingen willen toepassen op dit project. 
