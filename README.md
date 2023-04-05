@@ -12,6 +12,7 @@
 
 ## Beschrijving
 <!-- In de Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
+UltiTV commentary source - Een tool waarin alle info tijden een Ultimate Frisbee wedstrijd te zien is, en klaar staat voor het geven van commentaar.
 <!-- Voeg een mooie poster visual toe 📸 -->
 ![image](https://user-images.githubusercontent.com/64197688/230198424-b2d369e9-efc5-4aaa-b57e-3a43b1ff5ddf.png)
 
