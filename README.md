@@ -29,8 +29,8 @@ Dit project is gemaakt met:
 
 ### Tools
 
-💻 Visual Studio Code <br>
-🎨 Concepts <br>
+💻 Visual Studio Code
+🎨 Concepts
 
 ### Tech
 

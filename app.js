@@ -53,7 +53,6 @@ app.post("/newPlayer", async (req, res) => {
 			questionId: req.body.question 
 		}
 	]
-	console.log(1, req.body)
 
 	postJson(postUrl, req.body).then((data) => {
 		
